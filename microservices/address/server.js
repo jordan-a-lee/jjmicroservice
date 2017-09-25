@@ -1,10 +1,19 @@
-const express = require('express')
-const app = express()
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser');
 
-app.get('/', function(req, res) {
-  res.send('Hello World!')
-})
+app.use(bodyParser.urlencoded({ extended: true}));
+app.use(bodyParser.json());
 
-app.listen(3000, function() {
-  console.log('Address microservice listening on port 3000!')
-})
+var port = process.env.PORT || 3000;
+
+var router = express.Router();
+
+router.get('/', function(req, res) {
+  res.json({ message: 'welcome to our REST api' });
+});
+
+app.use('/api', router);
+
+app.listen(port);
+console.log('Port listening on ' + port);
