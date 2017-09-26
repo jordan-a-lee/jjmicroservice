@@ -54,7 +54,9 @@ app.get('/person/:personid', function(req, res) {
   dynamodb.query(params, function(err, data) {
     if (err) console.log(err, err.stack); // an error occurred
     // else     console.log(JSON.stringify(data));           // successful response
-    else   res.json(data);
+    // else   res.json(data);
+        else   res.send(JSON.stringify(data));
+
   });
 });
 
