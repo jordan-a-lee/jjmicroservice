@@ -14,7 +14,8 @@
     "body-parser": "~1.17.1",
     "express": "^4.15.5",
     "sprintf-js": "^1.1.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "ejs": "^1.0.0"
   },
   "devDependencies": {
     "chakram": "^1.5.0",
