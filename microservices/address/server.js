@@ -315,6 +315,18 @@ app.get('/address/:addressid', function(req, res) {
 });
 
 
+// application -------------------------------------------------------------
+    // var path = require('path');
+    
+// allows angular to correctly locate core.js
+app.use('/ui', express.static(__dirname + '/ui'));
+
+app.get('*', function (req, res) {
+    // res.sendFile(path.resolve('../../ui/index.html'));
+    res.sendFile(__dirname + '/ui/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+    // res.sendFile(__dirname + '/../../ui/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
+
 //
 // app.get('*', function(req,res) {
 //   res.sendFile(__dirname + '/index.html');
