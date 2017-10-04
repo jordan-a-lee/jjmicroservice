@@ -22,6 +22,9 @@ var dynamodb = new AWS.DynamoDB();
 
 var jsonData = {};
 
+
+
+
 app.get('/person/:personid', function(req, res) {
   console.log(req.params.personid);
   var personid = req.params.personid;
