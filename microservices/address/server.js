@@ -154,7 +154,7 @@ router.route('/address')
       return;
     }
 
-    var address = new Address(req.body.person);
+    var address = new Address(req.body.address);
     if (!person.validate()) {
 
       // Bad request.
