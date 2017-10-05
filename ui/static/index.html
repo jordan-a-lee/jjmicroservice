@@ -26,7 +26,7 @@
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 <body ng-controller="mainController">
     <div class="container">
-        
+
         <!-- HEADER AND TODO COUNT -->
         <div class="jumbotron text-center">
             <h1>Existing Address</h1>
@@ -34,14 +34,7 @@
         <!-- address LIST -->
         <div id="todo-list" class="row">
             <div class="col-sm-4 col-sm-offset-4">
-
-                <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div class="checkbox" ng-repeat="addressData in addressDatas">
-                    <label>
-                        <h2>{{addressData.streetnumber}}</h2>
-                    </label>
-                </div>
-
+                {{addressDatas}}
             </div>
         </div>
 
@@ -50,7 +43,6 @@
             <h1>Search Address by Id</h1>
         </div>
 
-
         <!-- FORM TO CREATE TODOS -->
         <div id="todo-form" class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
@@ -58,10 +50,31 @@
                     <div class="form-group">
                         <input type="text" ng-model="addressid" id ="addressid" placeholder="Enter something" />
                         <input type="button" ng-click="getById()" value="Send" ng-disabled="addressid == null" />
-                        
                     </div>
                 </form>
+                {{address}}
             </div>
+        </div>
+
+        <div class="jumbotron text-center">
+            <h1>Post Address</h1>
+        </div>
+
+        <div id="address-form" class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+              <div class="form-group">
+                ID: <input type="text" ng-model="ID"/><br>
+                Street Number: <input type="text" ng-model="StreetNo"/><br>
+                Street1 <input type="text" ng-model="Street1"/><br>
+                Street2 <input type="text" ng-model="Street2"/><br>
+                City <input type="text" ng-model="City"/><br>
+                Country <input type="text" ng-model="Country"/><br>
+                Postal Code <input type="text" ng-model="PostalCode"/><br>
+                <input type="button" ng-click="null" value="Submit"/>
+              </div>
+            </form>
+          </div>
         </div>
 
     </div>
