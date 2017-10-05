@@ -40,9 +40,20 @@ function mainController($scope, $http) {
     // };
 
     // get address by id
+    // $scope.getById = function(id) {
+    //     console.log("hey");
+    //     $http.get('/api/address/' + id)
+    //         .success(function(data) {
+    //             $scope.address = data;
+    //             console.log(data);
+    //         })
+    //         .error(function(data) {
+    //             console.log('Error: ' + data);
+    //         });
+    // };
     $scope.getById = function() {
         console.log("hey");
-        var id =1;
+        var id = $scope.addressid
         $http.get('/api/address/' + id)
             .success(function(data) {
                 $scope.address = data;
@@ -51,6 +62,18 @@ function mainController($scope, $http) {
             .error(function(data) {
                 console.log('Error: ' + data);
             });
+    };
+    // $http.get('/api/address/'+$scope.formData.addressid)
+    //     .success(function(data) {
+    //         $scope.address = data;
+    //         console.log(data);
+    //     })
+    //     .error(function(data) {
+    //         console.log('Error: ' + data);
+    //     });
+    $scope.printHey = function() {
+        console.log("hey");
+        
     };
 
 }

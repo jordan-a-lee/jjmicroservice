@@ -29,6 +29,24 @@ var params = {
       "ID": "1"
     }
 };
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.header('Access-Control-Allow-Origin', '*');
+    // Request methods you wish to allow
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    // Request headers you wish to allow
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.header('Access-Control-Allow-Credentials', true);
+
+    // Pass to next layer of middleware
+    next();
+});
 
 // turn into JSON
 function dbToResponseObject(address) {
@@ -168,7 +186,7 @@ router.route('/address')
     });
   })
   .get(function (req, res) {
-    // Fetch data from DB.
+    // fetch all
     apiHelper.fetch(null, function (err, data) {
 
       // If the fetch failed.
@@ -317,15 +335,49 @@ app.get('/address/:addressid', function(req, res) {
 
 // application -------------------------------------------------------------
     // var path = require('path');
-    
-// allows angular to correctly locate core.js
-app.use('/ui', express.static(__dirname + '/ui'));
 
-app.get('*', function (req, res) {
-    // res.sendFile(path.resolve('../../ui/index.html'));
-    res.sendFile(__dirname + '/ui/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-    // res.sendFile(__dirname + '/../../ui/index.html'); // load the single view file (angular will handle the page changes on the front-end)
-});
+// allows angular to correctly locate core.js
+// app.use('/ui', express.static(__dirname + '/ui'));
+
+// app.get('*', function (req, res) {
+//     // res.sendFile(path.resolve('../../ui/index.html'));
+//     res.sendFile(__dirname + '/ui/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+//     // res.sendFile(__dirname + '/../../ui/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+// });
+// // Add headers
+//     var cors = require('cors');
+//     app.use(cors());
+
+// app.use(function (req, res, next) {
+
+//     // Website you wish to allow to connect
+//     res.header('Access-Control-Allow-Origin', '*');
+//     // Request methods you wish to allow
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+//     // Request headers you wish to allow
+//     res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-type,Accept,X-Access-Token,X-Key');
+
+//     // Set to true if you need the website to include cookies in the requests sent
+//     // to the API (e.g. in case you use sessions)
+//     res.header('Access-Control-Allow-Credentials', true);
+
+//     // Pass to next layer of middleware
+//     next();
+// });
+
+// function setupCORS(req, res, next) {
+//     res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+//     res.header('Access-Control-Allow-Headers', 'X-Requested-With, Content-type,Accept,X-Access-Token,X-Key');
+//     res.header('Access-Control-Allow-Origin', '*');
+//     if (req.method === 'OPTIONS') {
+//         res.status(200).end();
+//     } else {
+//         next();
+//     }
+// }
+// app.all('/*', setupCORS);
+
 
 //
 // app.get('*', function(req,res) {

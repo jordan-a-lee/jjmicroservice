@@ -1,0 +1,27 @@
+{
+  "name": "microservicesfall17",
+  "version": "0.0.0",
+  "description": "contains the microservices fall 17",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo \"Running Server in Production Mode\" && ./scripts/productionRun.sh",
+    "dev": "echo \"Running Server in Development Mode\" && ./scripts/devRun.sh"
+  },
+  "author": "CI_dev",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "aws-sdk": "^2.122.0",
+    "body-parser": "~1.17.1",
+    "express": "^4.15.5",
+    "sprintf-js": "^1.1.1",
+    "underscore": "^1.8.3",
+    "ejs": "^1.0.0"
+  },
+  "devDependencies": {
+    "chakram": "^1.5.0",
+    "loglevel": "^1.4.1",
+    "mocha": "^3.5.3",
+    "newman": "^3.6.0",
+    "nodemon": "~1.11.0"
+  }
+}
