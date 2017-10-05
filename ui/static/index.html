@@ -26,6 +26,24 @@
 <!-- SET THE CONTROLLER AND GET ALL TODOS -->
 <body ng-controller="mainController">
     <div class="container">
+        
+        <!-- HEADER AND TODO COUNT -->
+        <div class="jumbotron text-center">
+            <h1>Existing Address</h1>
+        </div>
+        <!-- address LIST -->
+        <div id="todo-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+
+                <!-- LOOP OVER THE TODOS IN $scope.todos -->
+                <div class="checkbox" ng-repeat="addressData in addressDatas">
+                    <label>
+                        <h2>{{addressData.streetnumber}}</h2>
+                    </label>
+                </div>
+
+            </div>
+        </div>
 
         <!-- HEADER AND TODO COUNT -->
         <div class="jumbotron text-center">
