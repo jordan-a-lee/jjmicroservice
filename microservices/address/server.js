@@ -37,8 +37,8 @@ app.use(function (req, res, next) {
     res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
     // Request headers you wish to allow
-    res.header('Access-Control-Allow-Headers', 'Content-Type');
-    res.header('Access-Control-Allow-Headers', 'X-Requested-With');
+    // res.header('Access-Control-Allow-Headers', 'Content-Type');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, X-Requested-With');
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)
@@ -85,13 +85,13 @@ function toDynamoDbObject(address) {
 
   console.log(address);
   return {
-    "ID": address.Item.ID,
-    "City": address.Item.City,
-    "Country": address.Item.Country,
-    "PostalCode": address.Item.PostalCode,
-    "Street1": address.Item.Street1,
-    "Street2": address.Item.Street2,
-    "StreetNo": address.Item.StreetNo
+    "ID": address.ID,
+    "City": address.City,
+    "Country": address.Country,
+    "PostalCode": address.PostalCode,
+    "Street1": address.Street1,
+    "Street2": address.Street2,
+    "StreetNo": address.StreetNo
   }
 }
 
@@ -99,14 +99,16 @@ function toDynamoDbObject(address) {
 router.route('/address')
   .post(function (req, res) {
     // Validate.
-    if (!req.body.address) {
+    console.log("this guy");
+    console.log(req.body);
+    if (!req.body) {
       // Bad request.
       res.status(code = 400).json({ "error": "missing address object.", code: 400 });
       return;
     }
 
-    var address = new Address(req.body.address);
-    if (!person.validate()) {
+    var address = new Address(req.body);
+    if (!address.validate()) {
 
       // Bad request.
       res.status(code = 400).json({ "error": "invalid address object.", code: 400 });

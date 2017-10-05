@@ -31,37 +31,37 @@ module.exports = class ApiHelper {
         return callback(err, null);
       }
 
-      if (_.isEmpty(data)) {
+      // if (_.isEmpty(data)) {
         params = _.omit(params, 'Key');
         params.Item = item;
 
         this._dynamoDocClient.put(params, (err, persistedData) => {
           if (err) {
-            console.error("Dynamo failed to persist data " + err);
+            console.error("Dynamo failed to persist data (inside put) " + err);
             return callback(err, null);
           } else {
             console.log("Successfully persited record into dynamo: " + JSON.stringify(item));
             callback(null, item);
           }
         });
-      } else {
-
-        var areEqual = true;
-        for(var prop in item){
-          if(data[prop] != null && !(data[prop] === item[prop])){
-            areEqual = false;
-            break;
-          }
-        }
-
-        if(areEqual){
-          console.log('Same object already exists in DB.');
-          return callback(null, item);
-        }else{
-        var err = "Item Already Exists";
-        return callback(err, null);
-        }
-      }
+      // } else {
+      //
+      //   var areEqual = true;
+      //   for(var prop in item){
+      //     if(data[prop] != null && !(data[prop] === item[prop])){
+      //       areEqual = false;
+      //       break;
+      //     }
+      //   }
+      //
+      //   if(areEqual){
+      //     console.log('Same object already exists in DB.');
+      //     return callback(null, item);
+      //   }else{
+      //   var err = "Item Already Exists";
+      //   return callback(err, null);
+      //   }
+      // }
     });
   }
 
@@ -277,4 +277,3 @@ module.exports = class ApiHelper {
     });
   }
 };
-

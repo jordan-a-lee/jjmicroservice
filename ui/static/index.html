@@ -64,14 +64,14 @@
           <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
               <div class="form-group">
-                ID: <input type="text" ng-model="ID"/><br>
-                Street Number: <input type="text" ng-model="StreetNo"/><br>
-                Street1 <input type="text" ng-model="Street1"/><br>
-                Street2 <input type="text" ng-model="Street2"/><br>
-                City <input type="text" ng-model="City"/><br>
-                Country <input type="text" ng-model="Country"/><br>
-                Postal Code <input type="text" ng-model="PostalCode"/><br>
-                <input type="button" ng-click="null" value="Submit"/>
+                ID: <input type="text" ng-model="formData.id"/><br>
+                Street Number: <input type="text" ng-model="formData.streetnumber"/><br>
+                Street1 <input type="text" ng-model="formData.street1"/><br>
+                Street2 <input type="text" ng-model="formData.street2"/><br>
+                City <input type="text" ng-model="formData.city"/><br>
+                Country <input type="text" ng-model="formData.country"/><br>
+                Postal Code <input type="text" ng-model="formData.zipCode"/><br>
+                <input type="button" ng-click="postAddress()" value="Submit"/>
               </div>
             </form>
           </div>

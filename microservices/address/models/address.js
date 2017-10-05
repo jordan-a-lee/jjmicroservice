@@ -9,7 +9,7 @@ var VALID_ADDRESS_REQUIRED_ATTRIBUTES = [
   "street1",
   "street2",
   "city",
-  "state",
+  "country",
   "zipCode",
   "deleted"
 ];
@@ -65,8 +65,8 @@ function isValid(object) {
 const isValidCity = (city) => {
   return isAlphabeticString(city);
 }
-const isValidState = (state) => {
-  return isAlphabeticString(state);
+const isValidCountry = (country) => {
+  return isAlphabeticString(country);
 }
 const isValidId = (id) => {
   var isNotEmpty = !isEmpty(id);
@@ -88,14 +88,14 @@ module.exports = class Address {
     console.log("hi");
     if (_.isObject(attributes)) {
     // TODO: eventually, remove ID as a member variable
-      this._id = attributes.id;
-      this._streetnumber = attributes.streetnumber;
-      this._street1 = attributes.street1;
-      this._street2 = attributes.street2;
-      this._city = attributes.city;
-      this._state = attributes.state;
-      this._zipCode = attributes.zipCode;
-      this._deleted = false;
+      this.ID = attributes.id;
+      this.StreetNo = attributes.streetnumber;
+      this.Street1 = attributes.street1;
+      this.Street2 = attributes.street2;
+      this.City = attributes.city;
+      this.Country = attributes.country;
+      this.PostalCode = attributes.zipCode;
+      this.deleted = false;
     }
   }
 
@@ -120,12 +120,12 @@ module.exports = class Address {
     }
   }
 
-  set state(state) {
-    if (state) {
-      if (isValidState(state)) {
-        this._state = state;
+  set country(country) {
+    if (country) {
+      if (isValidCountry(country)) {
+        this._country = country;
       } else {
-        throw new Exception("Invalid state")
+        throw new Exception("Invalid country")
       }
     }
   }
@@ -184,8 +184,8 @@ module.exports = class Address {
     return this._city;
   }
 
-  get state() {
-    return this._state;
+  get country() {
+    return this._country;
   }
 
   get streetnumber() {
@@ -217,7 +217,7 @@ module.exports = class Address {
         return false;
       }
     });
-    
+
     return true;
   }
 }
