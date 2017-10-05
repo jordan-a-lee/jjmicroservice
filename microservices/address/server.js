@@ -55,7 +55,7 @@ function dbToResponseObject(address) {
   if(!address){
     return null;
   } else if (Array.isArray(address)) {
-    
+
     // Handle if the given list is an array.
     var res = [];
     address.forEach(function(element){
@@ -97,55 +97,6 @@ function toDynamoDbObject(address) {
 
 
 router.route('/address')
-// post on resources
-    // .post(function(req, res) {
-    //         console.log(req);
-
-    //   var address = new Address(req.body.address);
-    //   if (!address.validate()) {
-
-    //     // Bad request.
-    //     res.status(code = 400).json({ "error": "invalid address object.", code: 400 });
-    //     return;
-    //   }
-      
-    //   console.log("inrouter");
-    //   console.log(address);
-    //   // var key = address.id;
-    //   var key = "1";
-    //   var obj = toDynamoDbObject(address);
-
-    //   params.Item = obj;
-
-    //   // Write to DB.
-    //   docClient.put(params, function(err, data) {
-    //     if (err) {
-    //       console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
-    //       res.status(500).json({ "error": err });
-    //     } else {
-    //       console.log("Added item:", JSON.stringify(data, null, 2));
-    //       // Return response.
-    //       var responseObj = dbToResponseObject(data);
-    //       res.status(200).json(responseObj);
-    //     }
-    //   });
-    // })
-
-    // // get on resources
-    // .get(function(req, res) {
-    //   docClient.get(params, function(err, data) {
-    //     if (err) {
-    //       console.error("Unable to read item. Error JSON:", JSON.stringify(err, null, 2));
-    //       res.status(500).json({ "error": "cannot retrieve items", code: 310 });
-
-    //     } else {
-    //       console.log("GetItem succeeded:", JSON.stringify(data, null, 2));
-    //       // Convert to response and return.
-    //       var responseObj = dbToResponseObject(data);
-    //       res.status(200).json(responseObj);
-    //     }
-    //   });
-    // });
   .post(function (req, res) {
     // Validate.
     if (!req.body.address) {
@@ -165,7 +116,7 @@ router.route('/address')
     // Write to DB.
     var key = address.id;
     var obj = toDynamoDbObject(address);
-      
+
     apiHelper.persist(key, obj, function (err, data) {
 
       // Oh no! DB Write failed.
@@ -200,7 +151,7 @@ router.route('/address')
       res.status(200).json(data);
     });
   });
-    
+
 router.route('/address/:addressid')
     .put(function (req, res) {
       // Get addressid from URL.
@@ -298,7 +249,7 @@ router.route('/address/:addressid')
 
 
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'hooray! welcome to our api!' });
 });
 app.use('/api', router);
 
