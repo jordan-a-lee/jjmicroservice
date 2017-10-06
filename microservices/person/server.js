@@ -55,7 +55,7 @@ function dbToResponseObject(person) {
   if(!person){
     return null;
   } else if (Array.isArray(person)) {
-    
+
     // Handle if the given list is an array.
     var res = [];
     person.forEach(function(element){
@@ -122,7 +122,7 @@ router.route('/person')
     // Write to DB.
     var key = person.id;
     var obj = toDynamoDbObject(person);
-      
+
     apiHelper.persist(key, obj, function (err, data) {
 
       // Oh no! DB Write failed.
@@ -157,7 +157,7 @@ router.route('/person')
       res.status(200).json(data);
     });
   });
-    
+
 router.route('/person/:personid')
     .put(function (req, res) {
       // Get personid from URL.
@@ -255,39 +255,39 @@ router.route('/person/:personid')
 
 
 router.get('/', function(req, res) {
-    res.json({ message: 'hooray! welcome to our api!' });   
+    res.json({ message: 'hooray! welcome to our api!' });
 });
 app.use('/api', router);
 
 
 
-
-app.get('/person/:personid', function(req, res) {
-  console.log(req.params.personid);
-  var personid = req.params.personid;
-  var params = {
-   ExpressionAttributeValues: {
-    ":v1": {
-      S: personid
-     }
-   },
-   KeyConditionExpression: "ID = :v1",
-   TableName: "Person"
-  };
-
-  dynamodb.query(params, function(err, data) {
-    if (err) console.log(err, err.stack); // an error occurred
-    // else     console.log(JSON.stringify(data));           // successful response
-    // else   res.json(data);
-        else   {
-          app.set('json spaces', 40);
-          jsonData = JSON.stringify(data, null, 40);
-          // res.json(data);
-          res.json(data);
-        }
-
-  });
-});
+//
+// app.get('/person/:personid', function(req, res) {
+//   console.log(req.params.personid);
+//   var personid = req.params.personid;
+//   var params = {
+//    ExpressionAttributeValues: {
+//     ":v1": {
+//       S: personid
+//      }
+//    },
+//    KeyConditionExpression: "ID = :v1",
+//    TableName: "Person"
+//   };
+//
+//   dynamodb.query(params, function(err, data) {
+//     if (err) console.log(err, err.stack); // an error occurred
+//     // else     console.log(JSON.stringify(data));           // successful response
+//     // else   res.json(data);
+//         else   {
+//           app.set('json spaces', 40);
+//           jsonData = JSON.stringify(data, null, 40);
+//           // res.json(data);
+//           res.json(data);
+//         }
+//
+//   });
+// });
 
 app.listen(port);
 console.log('Port listening on ' + port);

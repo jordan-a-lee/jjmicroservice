@@ -34,8 +34,24 @@
         <!-- address LIST -->
         <div id="todo-list" class="row">
             <div class="col-sm-4 col-sm-offset-4">
-                {{addressDatas}}
+              <ul>
+                <li ng-repeat="address in addressDatas">
+                  <b>ID:</b> {{addressDatas[$index].ID}}<br>
+                  {{addressDatas[$index].StreetNo}} {{addressDatas[$index].Street1}}, {{addressDatas[$index].Street2}}<br>
+                  {{addressDatas[$index].City}}, {{addressDatas[$index].Country}}, {{addressDatas[$index].PostalCode}}
+                </li>
+              </ul>
             </div>
+        </div>
+
+        <div class="jumbotron text-center">
+          <h1>Existing Persons</h1>
+        </div>
+
+        <div id="todo-list" class="row">
+          <div class="col-sm-4 col-sm-offset-4">
+
+          </div>
         </div>
 
         <!-- HEADER AND TODO COUNT -->
@@ -52,7 +68,25 @@
                         <input type="button" ng-click="getById()" value="Send" ng-disabled="addressid == null" />
                     </div>
                 </form>
-                {{address}}
+              <p>  {{address.StreetNo}} {{address.Street1}} {{address.Street2}}<br>
+                {{address.City}} {{address.Country}} {{address.PostalCode}}<br></p>
+            </div>
+        </div>
+
+        <div class="jumbotron text-center">
+          <h1>Search Person by ID</h1>
+        </div>
+
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" ng-model="addressid" id ="addressid" placeholder="Enter something" />
+                        <input type="button" ng-click="getById()" value="Send" ng-disabled="addressid == null" />
+                    </div>
+                </form>
+              <p>  {{address.StreetNo}} {{address.Street1}} {{address.Street2}}<br>
+                {{address.City}} {{address.Country}} {{address.PostalCode}}<br></p>
             </div>
         </div>
 
@@ -64,13 +98,13 @@
           <div class="col-sm-8 col-sm-offset-2 text-center">
             <form>
               <div class="form-group">
-                ID: <input type="text" ng-model="formData.id"/><br>
-                Street Number: <input type="text" ng-model="formData.streetnumber"/><br>
+                <b>ID <input type="text" ng-model="formData.id"/><br>
+                Street No. <input type="text" ng-model="formData.streetnumber"/><br>
                 Street1 <input type="text" ng-model="formData.street1"/><br>
                 Street2 <input type="text" ng-model="formData.street2"/><br>
                 City <input type="text" ng-model="formData.city"/><br>
                 Country <input type="text" ng-model="formData.country"/><br>
-                Postal Code <input type="text" ng-model="formData.zipCode"/><br>
+                Postal Code <input type="text" ng-model="formData.zipCode"/><br></b>
                 <input type="button" ng-click="postAddress()" value="Submit"/>
               </div>
             </form>
