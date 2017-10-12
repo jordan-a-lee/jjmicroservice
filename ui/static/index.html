@@ -50,7 +50,16 @@
 
         <div id="todo-list" class="row">
           <div class="col-sm-4 col-sm-offset-4">
-
+            <li ng-repeat="person in personData">
+              <b>ID:</b> {{personData[$index].ID}}<br>
+              <b>Name:</b> {{personData[$index].FirstName}} {{personData[$index].LastName}}<br>
+              <b>Titles:</b> {{personData[$index].Title}},{{personData[$index].TitleOfCourtesy}}<br>
+              <b>Email:</b> {{personData[$index].Email}}<br>
+              <b>Home Phone:</b> {{personData[$index].HomePhone}}<br>
+              <b>Postal Code:</b> {{personData[$index].PostalCode}}<br>
+              <b>Photo:</b> {{personData[$index].Photo}}<br>
+              <b>Notes:</b> {{personData[$index].Notes}}<br>
+            </li>
           </div>
         </div>
 
@@ -77,16 +86,22 @@
           <h1>Search Person by ID</h1>
         </div>
 
-        <div id="todo-form" class="row">
+        <div id="todo-form2" class="row">
             <div class="col-sm-8 col-sm-offset-2 text-center">
                 <form>
                     <div class="form-group">
-                        <input type="text" ng-model="addressid" id ="addressid" placeholder="Enter something" />
-                        <input type="button" ng-click="getById()" value="Send" ng-disabled="addressid == null" />
+                        <input type="text" ng-model="personid" id ="personid" placeholder="Enter something" />
+                        <input type="button" ng-click="getByPersonId()" value="Send" ng-disabled="personid == null"/>
                     </div>
                 </form>
-              <p>  {{address.StreetNo}} {{address.Street1}} {{address.Street2}}<br>
-                {{address.City}} {{address.Country}} {{address.PostalCode}}<br></p>
+              <p>  <b>ID:</b> {{person.ID}}<br>
+              <b>Name:</b> {{person.FirstName}} {{person.LastName}}<br>
+              <b>Titles:</b> {{person.Title}}, {{person.TitleOfCourtesy}}<br>
+              <b>Email:</b> {{person.Email}}<br>
+              <b>Home Phone:</b> {{person.HomePhone}}<br>
+              <b>Postal Code:</b> {{person.PostalCode}}<br>
+              <b>Photo:</b> {{person.Photo}}<br>
+              <b>Notes:</b> {{person.Notes}}<br></p>
             </div>
         </div>
 
@@ -106,6 +121,31 @@
                 Country <input type="text" ng-model="formData.country"/><br>
                 Postal Code <input type="text" ng-model="formData.zipCode"/><br></b>
                 <input type="button" ng-click="postAddress()" value="Submit"/>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <div class="jumbotron text-center">
+            <h1>Post Person</h1>
+        </div>
+
+        <div id="person-form" class="row">
+          <div class="col-sm-8 col-sm-offset-2 text-center">
+            <form>
+              <div class="form-group">
+                <b>ID <input type="text" ng-model="personData.id"/><br>
+                First Name <input type="text" ng-model="personData.FirstName"/><br>
+                Last Name <input type="text" ng-model="personData.street1"/><br>
+                Title <input type="text" ng-model="personData.street2"/><br>
+                Title Of Courtesy <input type="text" ng-model="personData.city"/><br>
+                Email <input type="text" ng-model="personData.country"/><br>
+                Home Phone <input type="text" ng-model="personData.zipCode"/><br>
+                Postal Code <input type="text" ng-model="personData.zipCode"/><br>
+                Photo <input type="text" ng-model="personData.zipCode"/><br>
+                Notes <input type="text" ng-model="personData.zipCode"/><br>
+              </b>
+                <input type="button" ng-click="postPerson()" value="Submit"/>
               </div>
             </form>
           </div>

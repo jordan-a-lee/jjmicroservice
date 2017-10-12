@@ -14,6 +14,15 @@ function mainController($scope, $http) {
             console.log('Error: ' + data);
         });
 
+    $http.get('http://localhost:8080/api/person')
+        .success(function(data) {
+            $scope.personData = data;
+            console.log(data);
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+
     // when submitting the add form, send the text to the node API
     $scope.postAddress = function() {
         $http.post('http://localhost:8000/api/address', $scope.formData)
@@ -21,6 +30,20 @@ function mainController($scope, $http) {
               console.log($scope.formData);
 
                 $scope.formData = {}; // clear the form so our user is ready to enter another
+                // $scope.todos = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+
+    $scope.postPerson = function() {
+        $http.post('http://localhost:8080/api/person', $scope.personData)
+            .success(function(data) {
+              console.log($scope.personData);
+
+                $scope.personData = {}; // clear the form so our user is ready to enter another
                 // $scope.todos = data;
                 console.log(data);
             })
@@ -59,6 +82,19 @@ function mainController($scope, $http) {
         $http.get('http://localhost:8000/api/address/' + id)
             .success(function(data) {
                 $scope.address = data;
+                console.log(data);
+            })
+            .error(function(data) {
+                console.log('Error: ' + data);
+            });
+    };
+
+    $scope.getByPersonId = function() {
+        console.log("person id get");
+        var id = $scope.personid
+        $http.get('http://localhost:8080/api/person/' + id)
+            .success(function(data) {
+                $scope.person = data;
                 console.log(data);
             })
             .error(function(data) {

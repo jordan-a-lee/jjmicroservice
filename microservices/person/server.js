@@ -88,16 +88,16 @@ function toDynamoDbObject(person) {
 
   console.log(person);
   return {
-    "ID": person.Item.ID,
-    "Email": person.Item.Email,
-    "FirstName": person.Item.FirstName,
-    "HomePhone": person.Item.HomePhone,
-    "LastName": person.Item.LastName,
-    "Notes": person.Item.Notes,
-    "Photo": person.Item.Photo,
-    "PostalCode": person.Item.PostalCode,
-    "Title": person.Item.Title,
-    "TitleOfCourtesy": person.Item.TitleOfCourtesy
+    "ID": person.ID,
+    "Email": person.Email,
+    "FirstName": person.FirstName,
+    "HomePhone": person.HomePhone,
+    "LastName": person.LastName,
+    "Notes": person.Notes,
+    "Photo": person.Photo,
+    "PostalCode": person.PostalCode,
+    "Title": person.Title,
+    "TitleOfCourtesy": person.TitleOfCourtesy
   }
 }
 
